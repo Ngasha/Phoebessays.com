@@ -1,3 +1,21 @@
+/* Add this at the top */
+.show {
+  display: block !important;
+}
+
+.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Existing CSS remains the same */
 * {
   margin: 0;
   padding: 0;
@@ -149,14 +167,15 @@ nav {
   animation: fadeInLeft 1s ease-in-out;
 }
 
-.hero-content h1 {
+.hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #007bff;
 }
 
-.hero-content p {
-  margin-bottom: 2rem;
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-buttons {
@@ -165,7 +184,7 @@ nav {
 
 .hero-buttons .get-started-btn,
 .hero-buttons .contact-us-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border: none;
   cursor: pointer;
   margin-right: 1rem;
@@ -178,14 +197,14 @@ nav {
   color: #fff;
 }
 
+.hero-buttons .get-started-btn:hover {
+  background: #0056b3;
+}
+
 .hero-buttons .contact-us-btn {
   background: #fff;
   color: #333;
   border: 1px solid #333;
-}
-
-.hero-buttons .get-started-btn:hover {
-  background: #0056b3;
 }
 
 .hero-buttons .contact-us-btn:hover {
@@ -319,6 +338,7 @@ footer {
 
   .hamburger {
       display: flex;
+      z-index: 22;
   }
 
   .nav-links,
@@ -353,6 +373,14 @@ footer {
 
   .mobile-nav {
       display: none;
+  }
+
+  .mobile-nav.show {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      top: 0;
+      background-color: #000000;
   }
 
   .mobile-nav-links,
