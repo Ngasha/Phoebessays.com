@@ -1,182 +1,153 @@
-/* styles.css */
-/* styles.css */
 * {
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: #fff;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
 
 header {
+  background: #fff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 1em;
-  background-color: #000000;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.logo img {
-  width: 100px;
-  margin-right: 10px;
-}
-
-nav ul {
+.nav-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  margin:0;
-  padding: 0;
 }
 
-nav a {
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
   text-decoration: none;
-  color: #fff;
-  font-size: 1.2em;
-  margin-right: 20px;
+  color: #333;
 }
 
-main {
-  flex: 1;
-  position: relative;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+.auth-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
 }
 
-.content {
-  text-align: center;
-}
-
-.content h2 {
-  font-size: 2.5em;
-  color: #ff69b4;
-}
-
-.content h3 {
-  font-size: 2em;
-  color: #fff;
-}
-
-.content p {
-  font-size: 1.2em;
-  margin-bottom: 1em;
-}
-
-.download-btn {
-  display: inline-block;
-  padding: 0.8em 1.5em;
-  background-color: #00cc99;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-}
-
-/* styles.css */
-.graphics {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 6em; */
-  margin: auto;
-}
-
-.graphics img {
-  height: 100%;
-  width: 520px;
-  object-fit: contain;
-}
-
-
-footer {
-  text-align: center;
-  padding: 1em;
-  background-color: #1a1a1a;
-  font-size: 1em;
-}
-/* TOGGLE MENU */
-.menu-button {
-  display: none;
-  background-color: #333;
-  color: white;
-  padding: 10px;
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+  padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: 26px;
-  right: 16px;
+  margin-left: 0.5rem;
 }
 
-.menu {
-  display: none;
+.auth-buttons .login-btn {
+  background: #fff;
+  color: #333;
+  border: 1px solid #333;
 }
 
-@media (max-width: 600px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-  }
-
-  .menu-button {
-    display: block;
-  }
-  .menu1{
-    display: none;
-  }
+.auth-buttons .signup-btn {
+  background: #333;
+  color: #fff;
+}
+main{
+  background-color: #cec1c1;
+  margin: 12px 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Responsive Design */
+.hero-content {
+  flex: 1;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+}
+
+.hero-buttons .get-started-btn,
+.hero-buttons .contact-us-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.hero-buttons .get-started-btn, .contact-us-btn{
+  background: #47a466;
+  height: 52px;
+  width: 170px;
+  border: 1px solid #47a466;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.hero-buttons .contact-us-btn {
+  background: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-  nav ul {
+  .hero {
       flex-direction: column;
-      align-items: center;
   }
-
-  .graphics {
-      flex-direction: column;
-      align-items: center;
+  
+  .hero-image {
+      margin-top: 2rem;
   }
-
-  .graphics img {
-      width: 80px;
+  
+  .nav-links {
+      display: none;
   }
-}
-
-@media (max-width: 480px) {
-  .content h2 {
-      font-size: 2em;
-  }
-
-  .content h3 {
-      font-size: 1.5em;
-  }
-
-  .download-btn {
-      font-size: 1em;
-      padding: 0.5em 1em;
+  
+  .auth-buttons {
+      display: none;
   }
 }
