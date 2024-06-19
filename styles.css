@@ -299,10 +299,11 @@ nav {
 }
 
 .check-prices-btn {
-  background: #6f42c1;
-  color: white;
+  background: #8cd9eb;
+  color: rgb(7, 6, 0);
   border: none;
   padding: 1rem 2rem;
+  font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 2rem;
