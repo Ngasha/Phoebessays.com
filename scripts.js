@@ -42,3 +42,31 @@ function addChatBubble(user, message) {
     chatWindow.appendChild(bubble);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
+
+//carousel for sample works
+const track = document.getElementById('carouselTrack');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const slides = Array.from(track.children);
+const slideWidth = slides[0].getBoundingClientRect().width;
+
+let currentIndex = 0;
+
+const updateTrackPosition = () => {
+    const amountToMove = -currentIndex * slideWidth;
+    track.style.transform = `translateX(${amountToMove}px)`;
+};
+
+prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateTrackPosition();
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateTrackPosition();
+    }
+});
