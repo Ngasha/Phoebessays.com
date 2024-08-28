@@ -50,9 +50,9 @@ nav {
   font-weight: bold;
   color: #333;
 }
-.logo a {
-  color: #000000;
+.logo a{
   text-decoration: none;
+  color: #000000;
 }
 
 .nav-links {
@@ -77,23 +77,8 @@ nav {
 .auth-buttons {
   display: flex;
 }
-.get-quote{
-  width: 100%;
-  max-width: 200px;
-  background-color: #095123;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: background-color 0.3s, color 0.3s;
-}
-.get-quote a{
-  color: #ffffff;
-  text-decoration: none;
-}
-.get-quote:hover{
-  background-color: #08a83d;
-}
 
+.auth-buttons .login-btn,
 .auth-buttons .signup-btn {
   padding: 0.5rem 1rem;
   border: none;
@@ -102,6 +87,12 @@ nav {
   border-radius: 5px;
 }
 
+.auth-buttons .login-btn {
+  background: #fff;
+  color: #333;
+  border: 1px solid #333;
+  transition: background-color 0.3s, color 0.3s;
+}
 
 .auth-buttons .signup-btn {
   background: #007bff;
@@ -109,6 +100,10 @@ nav {
   transition: background-color 0.3s, color 0.3s;
 }
 
+.auth-buttons .login-btn:hover {
+  background: #333;
+  color: #fff;
+}
 
 .auth-buttons .signup-btn:hover {
   background: #0056b3;
@@ -128,7 +123,23 @@ nav {
   border-radius: 5px;
   transition: all 0.3s ease;
 }
-
+.quotation{
+  width: 100%;
+  max-width: 250PX;
+  background: #2e2c2c;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.quotation a{
+  text-decoration: none;
+  color: #ffffff;
+}
+.quotation a:hover{
+  color: #007bff;
+}
+.quotation:hover{
+  background: #20b954;
+}
 .mobile-nav {
   display: none;
   position: absolute;
@@ -194,10 +205,9 @@ nav {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: #25D366; /* WhatsApp green color */
+  background: #016024; /* WhatsApp green color */
   color: #fff;
   font-size: 20px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -210,7 +220,7 @@ nav {
 }
 
 .get-started-button:hover {
-  background: #075822; /* Darker green on hover */
+  background: #20b954; /* Darker green on hover */
 }
 
 
@@ -310,7 +320,8 @@ nav {
 .feature-card h3 {
   margin-top: 0;
 }
-/*carousel buttons*/
+/*carousel buttons ########################*/
+
 
  .carousel-btn {
   background: none;
@@ -334,18 +345,14 @@ nav {
 
 
 .check-prices-btn {
-  background: #25D366;
-  color: rgb(255, 255, 255);
+  background: #8cd9eb;
+  color: rgb(7, 6, 0);
   border: none;
   padding: 1rem 2rem;
   font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 2rem;
-  text-decoration: none;
-}
-.check-prices-btn:hover{
-  background: #035820;
 }
 
 @media (max-width: 768px) {
