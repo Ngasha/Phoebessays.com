@@ -2,6 +2,20 @@
 .show {
   display: block !important;
 }
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px; /* Standard size for readability */
+  line-height: 1.6; /* Ensures comfortable reading experience */
+  color: #336; /* Slightly lighter gray for a softer look */
+  margin-bottom: 1em; /* Creates clear separation between paragraphs */
+}
 
 .open span:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
@@ -551,10 +565,10 @@ footer {
 
   .mobile-auth-buttons button {
       width: 50%;
-      border: 1px solid #054cb6;
+      border: 1px solid #616f82;
       border-radius: 8px;
       padding: .8rem;
-      background-color: #054cb6;
+      background-color: #616f82;
       color: #ffffff;
       font-size: 1em;
   }
@@ -1034,6 +1048,9 @@ footer {
 .footer-disclaimer img {
   margin-top: 1rem;
   max-width: 150px;
+}
+.footer-payment p{
+  color: #9a9393cb;
 }
 
 @media (max-width: 768px) {
