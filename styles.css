@@ -286,14 +286,26 @@ nav {
   text-align: center;
   padding: 2rem 0;
 }
+.features h2{
+  font-size: 28px;
+}
+/*import fonts*/
+
+@import url('https://fonts.googleapis.com/css2?family=Vattican+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabriella&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wishfull&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Melon&display=swap');
+
+
 .features p{
-  font-size: 1.2ßrem;
+  font-size: 1.5rem;
   margin: 0 auto;
   padding: 2.5rem 1.4rem;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
+  font-family: 'Vattican Brush', cursive;
+  line-height: 1.6;
   width: 100%;
   max-width: 78%;
+  color: #161515;
 }
 
 .carousel {
@@ -304,7 +316,8 @@ nav {
   margin: 1rem 0;
 }
 .carousel p{
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  font-family: 'Courier New', Courier, monospace;
 }
 .carousel-track-container {
   overflow: hidden;
