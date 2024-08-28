@@ -44,29 +44,35 @@ function addChatBubble(user, message) {
 }
 
 //carousel for sample works
-const track = document.getElementById('carouselTrack');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const slides = Array.from(track.children);
-const slideWidth = slides[0].getBoundingClientRect().width;
+document.addEventListener('DOMContentLoaded', function () {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const carouselTrack = document.getElementById('carouselTrack');
+    const slides = Array.from(carouselTrack.children);
+    const slideWidth = slides[0].getBoundingClientRect().width;
 
-let currentIndex = 0;
+    let currentSlideIndex = 0;
 
-const updateTrackPosition = () => {
-    const amountToMove = -currentIndex * slideWidth;
-    track.style.transform = `translateX(${amountToMove}px)`;
-};
-
-prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateTrackPosition();
+    // Function to update the position of the carousel track
+    function updateCarouselPosition() {
+        const offset = -currentSlideIndex * slideWidth;
+        carouselTrack.style.transform = `translateX(${offset}px)`;
     }
+
+    // Click event for the previous button
+    prevBtn.addEventListener('click', () => {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateCarouselPosition();
+        }
+    });
+
+    // Click event for the next button
+    nextBtn.addEventListener('click', () => {
+        if (currentSlideIndex < slides.length - 1) {
+            currentSlideIndex++;
+            updateCarouselPosition();
+        }
+    });
 });
 
-nextBtn.addEventListener('click', () => {
-    if (currentIndex < slides.length - 1) {
-        currentIndex++;
-        updateTrackPosition();
-    }
-});

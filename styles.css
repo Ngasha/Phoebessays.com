@@ -50,6 +50,10 @@ nav {
   font-weight: bold;
   color: #333;
 }
+.logo a {
+  color: #000000;
+  text-decoration: none;
+}
 
 .nav-links {
   list-style: none;
@@ -73,8 +77,23 @@ nav {
 .auth-buttons {
   display: flex;
 }
+.get-quote{
+  width: 100%;
+  max-width: 200px;
+  background-color: #095123;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.get-quote a{
+  color: #ffffff;
+  text-decoration: none;
+}
+.get-quote:hover{
+  background-color: #08a83d;
+}
 
-.auth-buttons .login-btn,
 .auth-buttons .signup-btn {
   padding: 0.5rem 1rem;
   border: none;
@@ -83,12 +102,6 @@ nav {
   border-radius: 5px;
 }
 
-.auth-buttons .login-btn {
-  background: #fff;
-  color: #333;
-  border: 1px solid #333;
-  transition: background-color 0.3s, color 0.3s;
-}
 
 .auth-buttons .signup-btn {
   background: #007bff;
@@ -96,10 +109,6 @@ nav {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.auth-buttons .login-btn:hover {
-  background: #333;
-  color: #fff;
-}
 
 .auth-buttons .signup-btn:hover {
   background: #0056b3;
@@ -201,7 +210,7 @@ nav {
 }
 
 .get-started-button:hover {
-  background: #20b954; /* Darker green on hover */
+  background: #075822; /* Darker green on hover */
 }
 
 
@@ -301,8 +310,9 @@ nav {
 .feature-card h3 {
   margin-top: 0;
 }
+/*carousel buttons*/
 
-.carousel-btn {
+ .carousel-btn {
   background: none;
   border: none;
   font-size: 2rem;
@@ -315,22 +325,27 @@ nav {
 }
 
 .prev-btn {
-  left: 0;
+  left: 6%;
 }
 
 .next-btn {
-  right: 0;
+  right: 6%;
 }
 
+
 .check-prices-btn {
-  background: #8cd9eb;
-  color: rgb(7, 6, 0);
+  background: #25D366;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 1rem 2rem;
   font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 2rem;
+  text-decoration: none;
+}
+.check-prices-btn:hover{
+  background: #035820;
 }
 
 @media (max-width: 768px) {
