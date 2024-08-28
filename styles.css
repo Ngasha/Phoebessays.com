@@ -368,6 +368,13 @@ nav {
   .carousel-btn {
       display: none;
   }
+  .Get-quote,.quotation{
+    display: none;
+  }
+  .login-btn a{
+    text-decoration: none;
+    color: #ffffff;
+  }
 }
 /* testimonials */
 
