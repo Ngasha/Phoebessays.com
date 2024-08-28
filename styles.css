@@ -180,6 +180,30 @@ nav {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
 }
+/*send prompt*/
+.get-started-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #25D366; /* WhatsApp green color */
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.get-started-button i {
+  margin-left: 10px; /* Space between text and icon */
+  font-size: 20px;
+}
+
+.get-started-button:hover {
+  background: #20b954; /* Darker green on hover */
+}
+
 
 .hero-buttons {
   display: flex;
@@ -430,7 +454,7 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   nav {
       justify-content: space-between;
   }
@@ -503,6 +527,20 @@ footer {
       color: #ffffff;
       font-size: 1em;
   }
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.get-started-button {
+    width: 100%; /* Optional: make the button full width on small screens */
+    max-width: 300px; /* Limit the maximum width of the button */
+    text-align: center;
+}
+
+.get-started-button i {
+    margin-left: 5px; /* Adjust spacing for smaller screens */
+}
 }
 
 @media (min-width: 769px) {
