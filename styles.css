@@ -534,12 +534,12 @@ footer {
 
 .get-started-button {
     width: 100%; /* Optional: make the button full width on small screens */
-    max-width: 300px; /* Limit the maximum width of the button */
+    max-width: 215px; /* Limit the maximum width of the button */
     text-align: center;
 }
 
 .get-started-button i {
-    margin-left: 5px; /* Adjust spacing for smaller screens */
+    margin-left: 15px; /* Adjust spacing for smaller screens */
 }
 }
 
