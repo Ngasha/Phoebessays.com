@@ -71,7 +71,7 @@ nav {
 }
 
 .nav-links a:hover {
-  color: #007bff;
+  color: #545e67;
 }
 
 .auth-buttons {
@@ -95,7 +95,7 @@ nav {
 }
 
 .auth-buttons .signup-btn {
-  background: #007bff;
+  background: #545e67;
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -126,7 +126,7 @@ nav {
 .quotation{
   width: 100%;
   max-width: 250PX;
-  background: #2e2c2c;
+  background: #545e67;
   padding: 10px 20px;
   border-radius: 4px;
 }
@@ -135,7 +135,7 @@ nav {
   color: #ffffff;
 }
 .quotation a:hover{
-  color: #007bff;
+  color: #545e67;
 }
 .quotation:hover{
   background: #20b954;
@@ -190,7 +190,7 @@ nav {
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #007bff;
+  color: #545e67;
 }
 
 .hero p {
@@ -205,7 +205,7 @@ nav {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: #016024; /* WhatsApp green color */
+  background: #5e7c67; /* WhatsApp green color */
   color: #fff;
   font-size: 20px;
   border-radius: 5px;
@@ -239,7 +239,7 @@ nav {
 }
 
 .hero-buttons .get-started-btn {
-  background: #007bff;
+  background: #545e67;
   color: #fff;
 }
 
@@ -331,7 +331,7 @@ nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #007bff;
+  color: #545e67;
   z-index: 1;
 }
 
@@ -388,7 +388,7 @@ nav {
 .testimonials h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #007bff;
+  color: #545e67;
 }
 
 .testimonial-cards {
@@ -413,9 +413,11 @@ nav {
 
 .testimonial-card h4 {
   margin-bottom: 0.5rem;
-  color: #007bff;
+  color: #545e67;
 }
-
+footer{
+  background: #2e2c2c;
+}
 /* footer
 
 footer {
@@ -440,7 +442,7 @@ footer {
 
 .footer-section h3 {
   margin-bottom: 1rem;
-  color: #007bff;
+  color: #545e67;
 }
 
 .footer-section ul {
@@ -458,7 +460,7 @@ footer {
 }
 
 .footer-section ul li a:hover {
-  color: #007bff;
+  color: #545e67;
 } */
 
 @keyframes fadeInLeft {
@@ -587,7 +589,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: #007bff;
+    background: #545e67;
     color: white;
 }
 
@@ -629,7 +631,7 @@ nav {
     cursor: pointer;
     border-radius: 5px;
     background: white;
-    color: #007bff;
+    color: #545e67;
     font-weight: 600;
 }
 
@@ -663,7 +665,7 @@ nav {
     .mobile-nav {
         display: flex;
         flex-direction: column;
-        background: #007bff;
+        background: #545e67;
         padding: 1rem;
     }
     
@@ -694,7 +696,7 @@ nav {
 } */
 
 .schedule-hero {
-    background: linear-gradient(135deg, #007bff 0%, #63e570 100%);
+    background: linear-gradient(135deg, #545e67 0%, #63e570 100%);
     color: white;
     text-align: center;
     padding: 2rem 1rem;
@@ -720,7 +722,7 @@ nav {
 .schedule-content h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #007bff;
+    color: #545e67;
 }
 
 .schedule-cards {
@@ -741,7 +743,7 @@ nav {
 }
 
 .schedule-card h3 {
-    color: #007bff;
+    color: #545e67;
     margin-bottom: 1rem;
 }
 
@@ -762,14 +764,14 @@ nav {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    background: #007bff;
+    background: #545e67;
     color: #fff;
     transition: background-color 0.3s, color 0.3s;
     margin-top: 2rem;
 }
 
 .book-session-btn:hover {
-    background: #0056b3;
+    background: #545e67;
 }
 
 @keyframes fadeInUp {
@@ -796,7 +798,7 @@ nav {
 }
 
 footer {
-    background: #007bff;
+    background: #545e67;
     color: white;
     padding: 2rem 1rem;
     text-align: center;
@@ -859,7 +861,7 @@ footer {
 }
 
 .chat-header {
-  background: #007bff;
+  background: #545e67;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -890,7 +892,7 @@ footer {
 }
 
 .admin-bubble {
-  background: #007bff;
+  background: #545e67;
   color: white;
   text-align: right;
   float: right;
@@ -919,7 +921,7 @@ footer {
 
 .chat-input-container button {
   padding: 0.5rem 1rem;
-  background: #007bff;
+  background: #545e67;
   color: white;
   border: none;
   border-radius: 20px;
@@ -940,7 +942,7 @@ footer {
 /* ********************
 *********footer************* */
 .footer {
-  background-color: #1678d4; /* Adjust to match your color theme */
+  background-color: #545e67; /* Adjust to match your color theme */
   color: white;
   padding: 2rem 1rem;
   font-family: Arial, sans-serif;
