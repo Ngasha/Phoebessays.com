@@ -286,6 +286,15 @@ nav {
   text-align: center;
   padding: 2rem 0;
 }
+.features p{
+  font-size: 1.2ßrem;
+  margin: 0 auto;
+  padding: 2.5rem 1.4rem;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 78%;
+}
 
 .carousel {
   display: flex;
@@ -294,7 +303,9 @@ nav {
   position: relative;
   margin: 1rem 0;
 }
-
+.carousel p{
+  font-size: 0.8rem;
+}
 .carousel-track-container {
   overflow: hidden;
   width: 80%;
