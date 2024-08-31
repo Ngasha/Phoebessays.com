@@ -3,86 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Phoebe Essays offers top-notch online tutoring services to take your student experience to the next level. Schedule your sessions today and get started.">
-    <meta name="keywords" content="online tutoring, student experience, schedule classes, Phoebe Essays">
-    <meta name="author" content="Phoebe Essays">
-    <title>Phoebe Essays - Enhance Your Student Experience with Online Tutoring</title>
+    <title>Get Quote Calculator</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "Phoebe Essays",
-      "url": "http://www.phoebessays.com",
-      "logo": "http://www.phoebessays.com/images/logo.png",
-      "sameAs": [
-        "https://www.instagram.com/phoebessays?igsh=MWRhdnQxcXNpNmxucA%3D%3D&utm_source=qr",
-        "https://twitter.com/phoebessay"
-      ]
-    }
-    </script>
 </head>
 <body>
+    <!-- Your website's existing content -->
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Phoebe Essays Logo">
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="online-tutor.html">Online Tutor</a></li>
-                    <li><a href="schedule.html">Schedule</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <section class="hero">
-        <div class="container">
-            <h1>Take student experience to the next level</h1>
-            <p>Struggling with procrastination and feeling trapped in a vicious cycle of stress and exhaustion? Discover Phoebessay, a Writer to help with your #classwork and #assignments.</p>
-            <div class="cta-buttons">
-                <a href="get-started.html" class="btn btn-primary">Get Started</a>
-                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
-            </div>
-        </div>
-    </section>
-    <section class="features">
-        <div class="container">
-            <h2>Why Choose Phoebe Essays?</h2>
+        <nav>
             <ul>
-                <li>Professional Tutors</li>
-                <li>Flexible Scheduling</li>
-                <li>Comprehensive Support</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Samples</a></li>
+                <li><a href="#" id="getQuote">Get Quote</a></li>
             </ul>
+        </nav>
+    </header>
+
+    <!-- Calculator Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Calculate Your Quote</h2>
+            <form id="quoteForm">
+                <label for="topic">Topic:</label>
+                <input type="text" id="topic" name="topic" required>
+
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+
+                <label for="pages">Number of Pages:</label>
+                <input type="number" id="pages" name="pages" min="1" required>
+
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="result"></div>
         </div>
-    </section>
-    <section class="testimonials">
-        <div class="container">
-            <h2>What Our Students Say</h2>
-            <div class="testimonial">
-                <p>"Phoebe Essays has transformed my learning experience. The tutors are top-notch!" - Jane Doe</p>
-            </div>
-            <div class="testimonial">
-                <p>"Flexible scheduling has made it so much easier to balance my studies and work." - John Smith</p>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Phoebe Essays. All rights reserved.</p>
-            <div class="social-media">
-                <a href="https://www.instagram.com/phoebessays?igsh=MWRhdnQxcXNpNmxucA%3D%3D&utm_source=qr"><img src="images/instagram.png" alt="Instagram"></a>
-                <a href="https://twitter.com/phoebessay"><img src="images/twitter.png" alt="Twitter"></a>
-            </div>
-        </div>
-    </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

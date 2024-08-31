@@ -30,7 +30,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#samples">Samples</a></li>
-                <li><a href="#contact">Get Quote</a></li>
+                <li><a href="#" id="getQuote">Get Quote</a></li>
             </ul>
             <div class="Get-quote">
                 <div class="quotation"><a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank">Hire Someone</a></div>
@@ -48,7 +48,7 @@
             <ul class="mobile-nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#samples">Samples</a></li>
-                <li><a href="#contact">Get Quote</a></li>
+                <li><a href="#" id="getQuote">Get Quote</a></li>
             </ul>
             <div class="mobile-auth-buttons">
                 <button class="login-btn"><a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank">Hire Someone</a></button>
@@ -69,7 +69,7 @@
             </div>
             
             <div class="hero-image">
-                <img src="./img/student-studying (3).png" alt="Student Studying">
+                <img src="./img/student-studying (2).png" alt="Student Studying">
             </div>
         </section>
         <section id="samples" class="features">
@@ -153,6 +153,26 @@
                 </div>
             </div>
         </section>
+         <!-- Calculator Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Calculate Your Quote</h2>
+            <form id="quoteForm">
+                <label for="topic">Topic:</label>
+                <input type="text" id="topic" name="topic" required>
+
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+
+                <label for="pages">Number of Pages:</label>
+                <input type="number" id="pages" name="pages" min="1" required>
+
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
     </main>
     <footer class="footer">
         <div class="footer-container">
@@ -186,6 +206,7 @@
             </div>
         </div>
     </footer>
+    <script src="script.js"></script>
     <script src="scripts.js"></script>
 </body>
 

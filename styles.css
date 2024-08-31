@@ -160,6 +160,7 @@ nav {
   top: 100%;
   left: 0;
   width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
@@ -168,6 +169,7 @@ nav {
 .mobile-nav-links {
   list-style: none;
   padding: 1rem 0;
+  margin-top: 50%;
 }
 
 .mobile-nav-links li {
@@ -190,7 +192,7 @@ nav {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1086,4 +1088,90 @@ footer {
   to {
       opacity: 1;
   }
+}
+/* Basic styling for the page */
+/* body {
+  font-family: Arial, sans-serif;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 15px;
+} */
+
+#quoteModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#result {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #333;
 }
