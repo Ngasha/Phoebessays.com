@@ -203,7 +203,7 @@ nav {
   animation: fadeInLeft 1s ease-in-out;
 }
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
 }
 .hero h1 {
   
@@ -288,7 +288,9 @@ nav {
   padding: 2rem 0;
 }
 .features h2{
-  font-size: 28px;
+  font-size: 68px;
+  font-family: Google Sans;
+    font-weight: normal;
 }
 /*import fonts*/
 
@@ -425,9 +427,11 @@ nav {
 }
 
 .testimonials h2 {
-  font-size: 2rem;
+  font-size: 68px;
   margin-bottom: 1rem;
   color: #545e67;
+  font-family: Google Sans;
+  font-weight: normal;
 }
 
 .testimonial-cards {
