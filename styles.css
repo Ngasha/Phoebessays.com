@@ -78,7 +78,7 @@
      font-family: Poppins, sans-serif;
      font-weight: 100;
      text-align: center;
-     /* letter-spacing: -4px; */
+     letter-spacing: -2px;
  }
  
  .samples-section h1 {
@@ -1309,7 +1309,7 @@ nav ul li {
  
  .icon {
      font-size: 30px;
-     color: #115b74;
+     color: #1bbc8e;
      margin-bottom: 10px;
  }
  /* Card Text */
