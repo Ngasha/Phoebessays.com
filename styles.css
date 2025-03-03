@@ -72,6 +72,23 @@
      position: relative;
  }
  
+ .container h1 {
+     font-size: 60px;
+     color: #545e67;
+     font-family: Poppins, sans-serif;
+     font-weight: 100;
+     text-align: center;
+     /* letter-spacing: -4px; */
+ }
+ 
+ .samples-section h1 {
+     font-size: 3.6rem;
+     font-family: Poppins;
+     font-weight: 100;
+     color: #545e67;
+     text-align: center;
+ }
+ 
  .logo {
      display: flex;
      align-items: center;
@@ -243,7 +260,7 @@
  }
  
  .hero-content h1 {
-     font-size: 4.5rem;
+     font-size: 2.5rem;
  }
  
  .hero h1 {
@@ -387,15 +404,15 @@
  .carousel-slide {
      min-width: 20%;
      box-sizing: border-box;
-     padding: 1rem;
+     padding: 20px;
  }
  
  .feature-card {
      display: block;
-     background: white;
-     border: 1px solid #ddd;
+     background: rgb(251, 238, 238);
+     border: 1px solid #e4d0d0;
      border-radius: 10px;
-     padding: 1rem;
+     padding: 20px;
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
      transition: transform 0.3s ease-in-out;
      text-decoration: none;
@@ -421,6 +438,7 @@
  
  .prev-btn {
      left: 6%;
+     margin-right: 30px;
  }
  
  .next-btn {
@@ -479,11 +497,11 @@
  }
  
  .testimonials h2 {
-     font-size: 68px;
+     font-size: 58px;
      margin-bottom: 1rem;
      color: #545e67;
      font-family: Google Sans;
-     font-weight: normal;
+     font-weight: 100;
  }
  
  .testimonial-cards {
@@ -1326,5 +1344,158 @@ nav ul li {
      }
      h1 {
          font-size: 2rem;
+     }
+ }
+ /*----------how to proof my work-----------*/
+ /* General Styles */
+ /* Section Styling */
+ 
+ .samples-section {
+     width: 90%;
+     max-width: 1200px;
+     margin: auto;
+     padding: 50px 0;
+ }
+ 
+ h1 {
+     font-size: 2.5rem;
+     font-weight: bold;
+     color: #000;
+ }
+ 
+ .description {
+     font-size: 1.4rem;
+     color: #444;
+     /* max-width: 600px; */
+     margin: 10px auto 30px;
+ }
+ /* Carousel Container */
+ 
+ .carousel-container {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+     overflow: hidden;
+     max-width: fit-content;
+     margin: auto;
+ }
+ 
+ .carousel {
+     display: flex;
+     width: 100%;
+     gap: 20px;
+     overflow-x: scroll;
+     scroll-behavior: smooth;
+     scrollbar-width: none;
+     /* Hide scrollbar */
+ }
+ 
+ .carousel-slide {
+     background: white;
+     border-radius: 15px;
+     padding: 20px;
+     max-height: 350px;
+     min-width: 200px;
+     max-width: 244px;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+     text-align: center;
+     flex: 0 0 220px;
+     /* Set fixed card width */
+ }
+ 
+ .carousel-slide img {
+     width: 50px;
+     height: auto;
+     margin-bottom: 10px;
+ }
+ /* Dots Styles */
+ 
+ .dots-container {
+     display: flex;
+     justify-content: center;
+     margin-top: 15px;
+ }
+ 
+ .dot {
+     width: 10px;
+     height: 10px;
+     margin: 0 5px;
+     background: gray;
+     border-radius: 50%;
+     cursor: pointer;
+     transition: background 0.3s;
+ }
+ 
+ .dot.active {
+     background: #007bff;
+ }
+ 
+ h2 {
+     font-size: 1.2rem;
+     color: #000;
+ }
+ 
+ p {
+     font-size: 0.9rem;
+     color: #555;
+ }
+ /* Carousel Buttons */
+ 
+ .carousel-btn {
+     background: transparent;
+     border: none;
+     font-size: 2rem;
+     cursor: pointer;
+     color: #333;
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+ }
+ 
+ #prevBtn {
+     left: 0;
+ }
+ 
+ #nextBtn {
+     right: 0;
+ }
+ /* Check Prices Button */
+ 
+ .check-prices-btn {
+     display: flex;
+     align-items: center;
+     padding: 15px 20px;
+     margin: 30px auto;
+     background: #3e9659;
+     color: #fff;
+     font-size: 20px;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background 0.3sease;
+     text-decoration: none;
+ }
+ 
+ .check-prices-btn:hover {
+     background: #3daa1c;
+     color: #000;
+ }
+ /* Responsive Design */
+ 
+ @media (max-width: 768px) {
+     h1 {
+         font-size: 2rem;
+     }
+     .description {
+         font-size: 0.9rem;
+     }
+     .carousel {
+         gap: 10px;
+     }
+     .carousel-slide {
+         min-width: 180px;
+     }
+     .carousel-btn {
+         font-size: 1.5rem;
      }
  }
