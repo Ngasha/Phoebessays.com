@@ -73,20 +73,22 @@
  }
  
  .container h1 {
-     font-size: 60px;
+     font-size: 40px;
      color: #545e67;
      font-family: Poppins, sans-serif;
      font-weight: 100;
      text-align: center;
      letter-spacing: -2px;
+     line-height: 1.1;
  }
  
  .samples-section h1 {
-     font-size: 3.6rem;
+     font-size: 40px;
      font-family: Poppins;
      font-weight: 100;
      color: #545e67;
      text-align: center;
+     line-height: 1.1;
  }
  
  .logo {
@@ -192,7 +194,7 @@
  .quotation {
      width: 100%;
      max-width: 250PX;
-     background: #545e67;
+     background: #1dc34f;
      padding: 10px 20px;
      border-radius: 4px;
  }
@@ -284,7 +286,7 @@
      display: inline-flex;
      align-items: center;
      padding: 10px 20px;
-     background: #5e7c67;
+     background: #1dc34f;
      /* WhatsApp green color */
      color: #fff;
      font-size: 20px;
@@ -444,8 +446,7 @@
  .next-btn {
      right: 6%;
  }
- 
- .check-prices-btn {
+ /* .check-prices-btn {
      background: #8cd9eb;
      color: rgb(7, 6, 0);
      border: none;
@@ -454,7 +455,7 @@
      border-radius: 5px;
      cursor: pointer;
      margin-top: 2rem;
- }
+ } */
  
  @media (max-width: 768px) {
      .carousel-track {
@@ -1467,13 +1468,14 @@ nav ul li {
      align-items: center;
      padding: 15px 20px;
      margin: 30px auto;
-     background: #3e9659;
+     background: #1fba4e;
      color: #fff;
      font-size: 20px;
      border-radius: 5px;
      cursor: pointer;
      transition: background 0.3sease;
      text-decoration: none;
+     width: 180px;
  }
  
  .check-prices-btn:hover {
@@ -1497,5 +1499,277 @@ nav ul li {
      }
      .carousel-btn {
          font-size: 1.5rem;
+     }
+ }
+ /* my get quote css pager */
+ /* .homework-help {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+     background: #ffffff;
+     animation: fadeIn 1.5s ease-in-out;
+ }
+ 
+ .info-section {
+     flex: 1;
+     min-width: 300px;
+     padding: 20px;
+     text-align: center;
+     line-height: 1.3;
+ }
+ 
+ .info-section h1 {
+     font-size: 2rem;
+     color: #000;
+     animation: slideInLeft 1.2s ease-in-out;
+ }
+ 
+ .badges {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 10px;
+     margin: 20px 0;
+ }
+ 
+ .badges span {
+     background: #eef7ee;
+     padding: 10px 15px;
+     border-radius: 20px;
+     font-size: 0.9rem;
+     transition: transform 0.3s ease-in-out;
+ }
+ 
+ .badges span:hover {
+     transform: scale(1.1);
+ }
+ 
+ .reviews {
+     display: flex;
+     justify-content: center;
+     gap: 15px;
+     font-size: 1rem;
+     margin-top: 10px;
+ }
+ 
+ .form-section {
+     flex: 1;
+     min-width: 350px;
+     max-width: 440px;
+     padding: 20px;
+     background: #fff;
+     border-radius: 8px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     animation: slideInRight 1.2s ease-in-out;
+ }
+ 
+ form {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+ }
+ 
+ label {
+     font-size: 1rem;
+     font-weight: bold;
+ }
+ 
+ select,
+ input {
+     padding: 10px;
+     font-size: 1rem;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+ 
+ button.E-button {
+     padding: 12px;
+     background: #fcb900;
+     border: none;
+     font-size: 1.1rem;
+     font-weight: bold;
+     color: #000;
+     cursor: pointer;
+     border-radius: 5px;
+     transition: background 0.3s ease-in-out;
+ }
+ 
+ button.E-button:hover {
+     background: #e5a800;
+ }
+ 
+ p {
+     font-size: 0.9rem;
+     text-align: center;
+     margin-top: 10px;
+ }
+ 
+ @media (max-width: 768px) {
+     .homework-help {
+         flex-direction: column;
+     }
+ }
+ 
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+     to {
+         opacity: 1;
+     }
+ }
+ 
+ @keyframes slideInLeft {
+     from {
+         transform: translateX(-50px);
+         opacity: 0;
+     }
+     to {
+         transform: translateX(0);
+         opacity: 1;
+     }
+ }
+ 
+ @keyframes slideInRight {
+     from {
+         transform: translateX(50px);
+         opacity: 0;
+     }
+     to {
+         transform: translateX(0);
+         opacity: 1;
+     }
+ } */
+ 
+ .homework-help {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+     background: url('img/gbk.svg') no-repeat center center/cover;
+     min-height: 68vh;
+ }
+ 
+ .info-section {
+     flex: 1;
+     max-width: 700px;
+     padding: 20px;
+     text-align: center;
+     animation: fadeIn 1.5s ease-in-out;
+ }
+ 
+ .info-section h1 {
+     font-size: 2rem;
+     color: #000;
+     animation: slideIn 1s ease-in-out;
+     line-height: 1.3;
+ }
+ 
+ .badges {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 10px;
+     margin: 20px 0;
+ }
+ 
+ .badges span {
+     background: #eef7ee;
+     padding: 10px 15px;
+     border-radius: 20px;
+     font-size: 0.9rem;
+     transition: transform 0.3s ease;
+ }
+ 
+ .badges span:hover {
+     transform: scale(1.1);
+ }
+ 
+ .reviews {
+     display: flex;
+     justify-content: center;
+     gap: 15px;
+     font-size: 1rem;
+     margin-top: 10px;
+ }
+ 
+ .form-section {
+     flex: 1;
+     min-width: 350px;
+     max-width: 440px;
+     padding: 20px;
+     background: #fff;
+     border-radius: 8px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     animation: slideIn 1s ease-in-out;
+ }
+ 
+ form {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+ }
+ 
+ label {
+     font-size: 1rem;
+     font-weight: bold;
+ }
+ 
+ select,
+ input {
+     padding: 10px;
+     font-size: 1rem;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+ 
+ button.E-button {
+     padding: 12px;
+     background: #fcb900;
+     border: none;
+     font-size: 1.1rem;
+     font-weight: bold;
+     color: #000;
+     cursor: pointer;
+     border-radius: 5px;
+     transition: background 0.3s ease;
+ }
+ 
+ button.E-button:hover {
+     background: #e5a800;
+ }
+ 
+ p {
+     font-size: 0.9rem;
+     text-align: center;
+     margin-top: 10px;
+ }
+ 
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+     to {
+         opacity: 1;
+     }
+ }
+ 
+ @keyframes slideIn {
+     from {
+         transform: translateY(-20px);
+         opacity: 0;
+     }
+     to {
+         transform: translateY(0);
+         opacity: 1;
+     }
+ }
+ 
+ @media (max-width: 768px) {
+     .homework-help {
+         flex-direction: column;
      }
  }

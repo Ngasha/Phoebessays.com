@@ -119,3 +119,9 @@ carousel.addEventListener('scroll', () => {
 // Initialize dots when page loads
 createDots();
 startAutoSlide();
+
+// send email on get quote page
+// document.querySelector("form").addEventListener("submit", function(event) {
+//     event.preventDefault();
+//     alert("Your request has been submitted!");
+// });
