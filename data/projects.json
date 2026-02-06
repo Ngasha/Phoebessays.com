@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "The Impact of AI on Modern Healthcare",
+        "category": "Research Paper",
+        "date": "2024-02-15",
+        "preview": "An analysis of how artificial intelligence is transforming diagnostic procedures...",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "title": "Sustainable Urban Planning in 2024",
+        "category": "Case Study",
+        "date": "2024-02-10",
+        "preview": "Examining the shift towards green infrastructure in metropolitan areas...",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "title": "Digital Marketing Trends: A Comparative Study",
+        "category": "Thesis",
+        "date": "2024-02-05",
+        "preview": "Comparing the efficacy of influencer marketing versus traditional...",
+        "link": "#"
+    },
+    {
+        "id": 4,
+        "title": "Psychological Effects of Social Media",
+        "category": "Essay",
+        "date": "2024-01-28",
+        "preview": "Investigating the correlation between screen time and anxiety in adolescents...",
+        "link": "#"
+    },
+    {
+        "id": 5,
+        "title": "Crypto-economics: The Future of Finance?",
+        "category": "Report",
+        "date": "2024-01-20",
+        "preview": "A detailed report on the stability and future of decentralized currency...",
+        "link": "#"
+    }
+]
