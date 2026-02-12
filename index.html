@@ -249,12 +249,12 @@
                 <div class="vault-controls">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="essay-search" placeholder="Search essays (e.g. 'Nursing', 'History')...">
+                        <input type="text" id="vault-search" placeholder="Search essays (e.g. 'Nursing', 'History')...">
                     </div>
                 </div>
             </div>
 
-            <div class="vault-grid" id="essay-grid">
+            <div class="vault-grid" id="vault-grid">
                 <!-- Dynamic Essays Load Here -->
                 <div class="loading-spinner">Loading essays...</div>
             </div>
@@ -534,8 +534,8 @@
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         // DOM Elements
-        const vaultGrid = document.getElementById('essay-grid'); // Fixed ID
-        const searchInput = document.getElementById('essay-search'); // Fixed ID
+        const vaultGrid = document.getElementById('vault-grid');
+        const searchInput = document.getElementById('vault-search');
 
         // Fetch and Render Essays
         // Global State
@@ -617,38 +617,31 @@
 
             essays.forEach((essay, index) => {
                 const card = document.createElement('div');
+                card.className = 'essay-card';
+                card.onclick = () => window.openModal(index);
 
-                // Use AI Title or Clean existing title
-                let displayTitle = essay.ai_title || (essay.title || 'Untitled')
-                    .replace(/\.docx|\.edited/gi, '')
-                    .replace(/\d{4}-\d{2}-\d{2}/g, '')
-                    .replace(/[_-]/g, ' ')
-                    .trim();
+                // Use AI Title and AI description
+                const displayTitle = essay.ai_title || (essay.title || 'Untitled');
+                const teaserText = essay.ai_description || (essay.content ? essay.content.substring(0, 120) + '...' : 'No preview available.');
 
                 // Smart Category Logic
                 const wordCount = essay.word_count || (essay.content || '').split(/\s+/).length;
                 let smartTag = 'EXAM ESSAY';
+                if (wordCount > 2500) smartTag = 'MAJOR THESIS';
+                else if (wordCount > 1000) smartTag = 'RESEARCH PAPER';
 
-                if (wordCount > 2500) {
-                    smartTag = 'MAJOR THESIS';
-                } else if (wordCount > 1000) {
-                    smartTag = 'RESEARCH PAPER';
-                }
-
-                card.className = 'essay-card';
-                card.onclick = () => window.openModal(index);
-
-                // AI Teaser or fallback
-                const teaserText = essay.ai_description || (essay.content ? essay.content.substring(0, 120) + '...' : 'No preview available.');
-
-                // Minimalist Academic Archive Layout
                 card.innerHTML = `
-                    <div class='card-top-row'>
-                        <span class='smart-tag'>${smartTag}</span>
-                        <span class='page-count'>${Math.ceil(wordCount / 300)} PAGES</span>
+                    <div>
+                        <div class='card-top-row'>
+                            <span class='smart-tag' style='color: #ff6b00; font-weight: bold;'>${smartTag}</span>
+                        </div>
+                        <h3 class='essay-title' style='margin-top: 10px;'>${displayTitle}</h3>
+                        <p class='ai-teaser'>${teaserText}</p>
                     </div>
-                    <h3 class='essay-title'>${displayTitle}</h3>
-                    <p class='ai-teaser'>${teaserText}</p>
+                    <div style='display: flex; justify-content: space-between; align-items: center; margin-top: 20px;'>
+                        <span style='color: #666; font-size: 0.8rem;'>${Math.ceil(wordCount / 300)} PAGES</span>
+                        <span style='color: #ff6b00; font-weight: bold;'>Read Sample <i class='fas fa-arrow-right'></i></span>
+                    </div>
                 `;
                 vaultGrid.appendChild(card);
             });
