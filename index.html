@@ -4,6 +4,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVGWYFVQW6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -226,12 +227,20 @@
         <section id="samples" class="samples-section">
             <h1>The Essay Vault</h1>
             <p class="description">
-                Browse through a selection of my 2000+ essays. Click the stack to expand.
+                Browse through a selection of my 2000+ essays. Use the search bar to find specific topics.
             </p>
 
-            <!-- Replaced Carousel with Essay Stack -->
-            <div id="essay-stack-container" style="margin-top: 50px;">
-                <!-- Stack will be rendered here by JS -->
+            <!-- Search Bar -->
+            <div class="vault-search-container">
+                <input type="text" id="vault-search"
+                    placeholder="Search for essays (e.g., 'Nursing', 'History', 'Law')...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <!-- Dynamic Grid Container -->
+            <div id="vault-grid" class="vault-grid">
+                <!-- Essays will be loaded here by Supabase -->
+                <div class="loading-spinner">Loading essays...</div>
             </div>
 
             <a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank" class="check-prices-btn"
@@ -499,6 +508,184 @@
     <script src="js/main.js"></script>
     <script src="js/stack.js"></script>
     <script src="js/reveal.js"></script>
+
+    <!-- Supabase Logic -->
+    <script>
+        // Supabase Configuration
+        const SUPABASE_URL = 'https://ssaxrgfglbyqnnhomovc.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzYXhyZ2ZnbGJ5cW5uaG9tb3ZjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MDg4NTQ4MiwiZXhwIjoyMDg2NDYxNDgyfQ.-R9MjqgoSv3du259__YOn2wj-3Aw-uCi9Ah46uNJk9o';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // DOM Elements
+        const vaultGrid = document.getElementById('vault-grid');
+        const searchInput = document.getElementById('vault-search');
+
+        // Fetch and Render Essays
+        // Global State
+        let currentEssays = [];
+
+        // Fetch and Render Essays
+        async function fetchEssays(query = '') {
+            vaultGrid.innerHTML = '<div class="loading-spinner">Loading essays...</div>';
+
+            try {
+                let queryBuilder = supabaseClient
+                    .from('essays')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(50);
+
+                if (query) {
+                    queryBuilder = queryBuilder.ilike('title', `%${query}%`);
+                }
+
+                const { data, error } = await queryBuilder;
+
+                if (error) throw error;
+
+                if (data) {
+                    currentEssays = data; // Store for modal
+                    renderEssays(data);
+                }
+
+            } catch (err) {
+                console.error('Error fetching essays:', err);
+                vaultGrid.innerHTML = '<div class="loading-spinner">Error loading essays. Please try again later.</div>';
+            }
+        }
+
+        // Modal Logic
+        window.openModal = function (index) {
+            const essay = currentEssays[index];
+            if (!essay) return;
+
+            document.getElementById('modal-title').innerText = essay.title || 'Untitled';
+            document.getElementById('modal-category').innerText = essay.category || 'ESSAY';
+            document.getElementById('modal-body').innerText = essay.content || 'No content provided.';
+
+            const modal = document.getElementById('essay-modal');
+            modal.style.display = 'flex';
+
+            // Force reflow
+            void modal.offsetWidth;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function (e) {
+            if (!e || e.target.id === 'essay-modal' || e.target.classList.contains('close-btn')) {
+                const modal = document.getElementById('essay-modal');
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = '';
+            }
+        };
+
+        function renderEssays(essays) {
+            vaultGrid.innerHTML = '';
+
+            if (!essays || essays.length === 0) {
+                vaultGrid.innerHTML = '<div class="loading-spinner">No essays found matching your search.</div>';
+                return;
+            }
+
+            essays.forEach((essay, index) => {
+                const card = document.createElement('div');
+                card.className = 'essay-grid-card';
+                card.onclick = () => window.openModal(index); // Trigger Modal
+                card.style.cursor = 'pointer';
+
+                // Format Date
+                const date = new Date(essay.created_at).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                card.innerHTML = `
+                    <div class="card-category">ESSAY</div> 
+                    <h3 class="card-title">${essay.title || 'Untitled Essay'}</h3>
+                    <p class="card-preview">${essay.content ? essay.content.substring(0, 150) + '...' : 'No preview available.'}</p>
+                    <div class="card-footer">
+                        <span class="card-date">${date}</span>
+                        <span class="card-link">READ SAMPLE <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                `;
+                vaultGrid.appendChild(card);
+            });
+        }
+
+        // Search Listener with Debounce
+        let debounceTimer;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                fetchEssays(e.target.value);
+            }, 500); // 500ms delay
+        });
+
+        // Initial Fetch
+        fetchEssays();
+        // Modal Logic
+        window.openModal = function (index) {
+            const essay = currentEssays[index];
+            if (!essay) return;
+
+            document.getElementById('modal-title').innerText = essay.title || 'Untitled';
+            document.getElementById('modal-category').innerText = essay.category || 'ESSAY';
+
+            // Format Content as HTML Paragraphs (Academic Style)
+            const rawContent = essay.content || 'No content provided.';
+            const formattedContent = rawContent
+                .split('\n')
+                .filter(para => para.trim().length > 0)
+                .map(para => `<p>${para.trim()}</p>`)
+                .join('');
+
+            document.getElementById('modal-body').innerHTML = formattedContent;
+
+            const modal = document.getElementById('essay-modal');
+            modal.style.display = 'flex';
+
+            // Force reflow
+            void modal.offsetWidth;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = function (e) {
+            if (!e || e.target.id === 'essay-modal' || e.target.classList.contains('close-btn')) {
+                const modal = document.getElementById('essay-modal');
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = '';
+            }
+        };
+    </script>
+    <!-- Essay Focus Modal -->
+    <div id="essay-modal" class="essay-modal" onclick="closeModal(event)">
+        <div class="modal-content-focus">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <span id="modal-category" class="modal-category">CATEGORY</span>
+                <h2 id="modal-title" class="modal-title">Essay Title</h2>
+            </div>
+            <div id="modal-body" class="modal-body">
+                <!-- Essay content goes here -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank" class="modal-cta-btn">
+                    Get Full Essay <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
