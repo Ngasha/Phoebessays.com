@@ -679,15 +679,13 @@
                         <!-- Paywall Blur & Lead Gen Form -->
                         <div class='paywall-blur'></div>
                         <div class='lead-gen-box'>
-                            <h3>Read the remaining ${remainingPages}+ pages</h3>
-                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
-                                This research paper is ${pageCount} pages long (${wordCount.toLocaleString()} words). 
-                                Enter your email to receive the full ${pageCount}-page PDF.
+                            <h3>Want to read the full paper?</h3>
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                                Unlock the complete ${pageCount} page document directly on WhatsApp.
                             </p>
-                            <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-                                <input type="email" id="lead-email" class="lead-input" placeholder="student@university.edu" />
-                                <button class="lead-submit" onclick="handleLeadGeneration('${essay.title.replace(/'/g, "\\'")}')">Unlock Full Paper</button>
-                            </div>
+                            <a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank" class="whatsapp-paywall-btn">
+                                <i class="fab fa-whatsapp"></i> GET FULL ACCESS
+                            </a>
                         </div>
                     </div>
                 </div>

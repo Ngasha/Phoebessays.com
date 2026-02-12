@@ -1566,12 +1566,16 @@ nav {
         line-height: 1.8;
     }
 }
+
 /* --- Mobile Paywall / Lead Gen Optimizations --- */
 @media (max-width: 768px) {
     .lead-gen-box {
-        margin-top: -20px; /* Less negative margin */
-        padding: 20px 15px; /* Compact padding */
-        width: 95%; /* Ensure it fits */
+        margin-top: -20px;
+        /* Less negative margin */
+        padding: 20px 15px;
+        /* Compact padding */
+        width: 95%;
+        /* Ensure it fits */
         margin-left: auto;
         margin-right: auto;
     }
@@ -1580,13 +1584,46 @@ nav {
         font-size: 1.1rem;
     }
 
-    .lead-input {
-        width: 100% !important; /* Stack full width */
-        margin-bottom: 10px;
+
+    .lead-gen-box h3 {
+        font-size: 1.1rem;
     }
 
-    .lead-submit {
-        width: 100%; /* Full width button */
-        margin-left: 0;
+    /* WhatsApp Button Mobile Fix */
+    .whatsapp-paywall-btn {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 12px 20px;
     }
+}
+
+/* WhatsApp Paywall Button */
+.whatsapp-paywall-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    /* Black circular button */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    /* Pill shape */
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1rem;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.whatsapp-paywall-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: #25D366;
+    /* WhatsApp Green on Hover */
+}
+
+.whatsapp-paywall-btn i {
+    font-size: 1.2rem;
 }
