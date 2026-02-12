@@ -145,14 +145,14 @@
                 </div>
             </div>
 
-            <div class="scrolling-academic-text">
+            <div class="scrolling-text-bg">
                 <div class="marquee-content">
                     <span>Best Academic Writing Agency &nbsp; Best Academic Writing Agency &nbsp;</span>
                     <span>Best Academic Writing Agency &nbsp; Best Academic Writing Agency &nbsp;</span>
                 </div>
             </div>
 
-            <div class="people-image-container">
+            <div class="hero-people-container">
                 <img src="img/darker-hero.png" alt="Students">
             </div>
 
@@ -210,6 +210,19 @@
                             class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                    <h3>Statistical Analysis (SPSS, R, Python)</h3>
+                    <p>You have the data, but no idea what to do with it. Your professor is asking for "Regression
+                        Models" and "T-Tests."</p>
+                    <p>We actually understand the math. We run the analysis, interpret the tables, and write the Results
+                        section for you. The Result: Accurate data analysis that supports your research hypothesis
+                        perfectly.</p>
+                    <a href="https://wa.me/message/B7CW6QTEDAVSG1" class="learn-more">LEARN MORE <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
                 <!-- Card 4 -->
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-check-circle"></i></div>
@@ -224,27 +237,32 @@
                 </div>
             </div>
         </section>
-        <section id="samples" class="samples-section">
-            <h1>The Essay Vault</h1>
-            <p class="description">
-                Browse through a selection of my 2000+ essays. Use the search bar to find specific topics.
-            </p>
 
-            <!-- Search Bar -->
-            <div class="vault-search-container">
-                <input type="text" id="vault-search"
-                    placeholder="Search for essays (e.g., 'Nursing', 'History', 'Law')...">
-                <i class="fas fa-search search-icon"></i>
+        <!-- Essay Vault Section -->
+        <section id="samples" class="essay-vault-section">
+            <div class="section-header-centered" id="essay-stack-container">
+                <span class="badge-pill">ESSAY VAULT</span>
+                <h2>Read Our <span class="highlight-orange">Best Work.</span></h2>
+                <p>Don't just take our word for it. Read actual papers we've written for students like you.</p>
+
+                <!-- Filter / Search Bar -->
+                <div class="vault-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="essay-search" placeholder="Search essays (e.g. 'Nursing', 'History')...">
+                    </div>
+                </div>
             </div>
 
-            <!-- Dynamic Grid Container -->
-            <div id="vault-grid" class="vault-grid">
-                <!-- Essays will be loaded here by Supabase -->
+            <div class="vault-grid" id="essay-grid">
+                <!-- Dynamic Essays Load Here -->
                 <div class="loading-spinner">Loading essays...</div>
             </div>
 
-            <a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank" class="check-prices-btn"
-                style="margin-top: 50px; display: inline-block;">Check prices</a>
+            <div class="view-more-container">
+                <a href="https://wa.me/message/B7CW6QTEDAVSG1" class="secondary-btn">View More Samples <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
         </section>
 
         <section class="homework-help">
@@ -320,9 +338,8 @@
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" class="faq-section-home" style="padding: 80px 20px;">
+        <section id="faq" class="faq-section">
             <div class="faq-hero">
-                <span class="subtitle-pill">FREQUENTLY ASKED QUESTIONS</span>
                 <h1>Got Questions?<br>We've Got Answers!</h1>
             </div>
 
@@ -735,26 +752,10 @@
     <script>
         // --- Parallax Scroll Animation ---
         document.addEventListener('DOMContentLoaded', () => {
-            const academicText = document.querySelector('.scrolling-academic-text');
-            const peopleImage = document.querySelector('.people-image-container');
-            const heroSection = document.querySelector('.hero-new');
-
-            if (academicText && peopleImage && heroSection) {
-                window.addEventListener('scroll', () => {
-                    // Performance: Check if hero is in view
-                    const rect = heroSection.getBoundingClientRect();
-                    if (rect.bottom < 0) return;
-
-                    const scrollY = window.pageYOffset;
-
-                    // 1. Text Background: Moves slightly deeper (downwards)
-                    academicText.style.transform = `translateY(${scrollY * 0.3}px)`;
-
-                    // 2. People Image: Moves slightly upward (floating against scroll)
-                    // MUST preserve translateX(-50%) for centering
-                    peopleImage.style.transform = `translate(-50%, ${scrollY * -0.15}px)`;
-                });
-            }
+            // Optional: Background text parallax if needed, 
+            // but for now, CSS sticky handles the image "anchoring".
+            // The user wanted "sticky logic" to prevent wandering.
+            // We can leave this empty or minimal for now.
         });
     </script>
     <!-- Essay Focus Modal -->

@@ -462,25 +462,30 @@ nav {
 
 /* --- Minimalist Academic Archive UI --- */
 .essay-card {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
+    /* Subtle Glass Effect */
     border: 1px solid #222;
-    border-radius: 0;
-    /* Square corners for a 'Journal' feel */
-    padding: 40px;
-    transition: border-color 0.3s ease;
+    border-radius: 4px;
+    /* Slight rounding */
+    padding: 30px;
+    transition: all 0.3s ease;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     min-height: 250px;
+    position: relative;
+    overflow: hidden;
 }
 
 .essay-card:hover {
     border-color: #ff6b00;
-    transform: none;
-    padding-left: 40px;
-    /* Keep padding consistent */
-    box-shadow: none;
+    transform: translateY(-5px);
+    /* Lift effect */
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding-left: 30px;
+    /* Reset padding shift */
 }
 
 .card-top-row {
@@ -663,42 +668,46 @@ nav {
     /* Fixed height for consistent staging */
     overflow: hidden;
     /* Keep floating elements contained */
+    display: flex;
+    flex-direction: column;
 }
 
 /* The Scrolling Background Text */
-.scrolling-academic-text {
-    position: relative;
+.scrolling-text-bg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1;
     /* Lower layer */
-    opacity: 0.1;
+    opacity: 0.15;
     /* Keep it subtle and background-focused */
     pointer-events: none;
     /* User can click 'through' the text to the cards */
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
+    font-size: 15vw;
+    /* Massive text */
 }
 
-/* The Floating People Image */
-.people-image-container {
-    position: absolute;
-    bottom: -20px;
-    /* Pulls it 'upward' from the very bottom edge */
-    left: 50%;
-    transform: translateX(-50%);
-    /* Centers it horizontally */
+/* The Sticky People Image */
+.hero-people-container {
+    position: sticky;
+    bottom: 0;
     z-index: 10;
     /* Higher layer to float on top of text */
     width: 100%;
-    max-width: 600px;
-    pointer-events: none;
     display: flex;
     justify-content: center;
+    pointer-events: none;
 }
 
-.people-image-container img {
-    width: 100%;
+.hero-people-container img {
+    width: 80%;
+    max-width: 900px;
     height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
     display: block;
 }
 
@@ -1479,13 +1488,12 @@ nav {
 @media (max-width: 768px) {
 
     /* 1. Compact Grid */
+    /* 1. Compact Grid */
     .vault-grid {
-        grid-template-columns: 1fr;
-        /* Single column */
-        gap: 12px;
-        /* Tighter spacing */
-        padding: 0 10px;
-        /* Consistent gutters */
+        grid-template-columns: 1fr !important;
+        /* Force Single column */
+        gap: 15px;
+        padding: 0;
     }
 
     .essay-card {
