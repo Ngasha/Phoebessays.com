@@ -145,14 +145,14 @@
                 </div>
             </div>
 
-            <div class="marquee-section">
+            <div class="scrolling-academic-text">
                 <div class="marquee-content">
                     <span>Best Academic Writing Agency &nbsp; Best Academic Writing Agency &nbsp;</span>
                     <span>Best Academic Writing Agency &nbsp; Best Academic Writing Agency &nbsp;</span>
                 </div>
             </div>
 
-            <div class="hero-students-image">
+            <div class="people-image-container">
                 <img src="img/darker-hero.png" alt="Students">
             </div>
 
@@ -544,8 +544,14 @@
                 if (error) throw error;
 
                 if (data) {
-                    currentEssays = data; // Store for modal
-                    renderEssays(data);
+                    // Filter for research papers (2+ pages, approx 550 words)
+                    const highValuePapers = data.filter(essay => {
+                        const wordCount = (essay.content || '').trim().split(/\s+/).length;
+                        return wordCount >= 550;
+                    });
+
+                    currentEssays = highValuePapers;
+                    renderEssays(highValuePapers);
                 }
 
             } catch (err) {
@@ -594,25 +600,38 @@
 
             essays.forEach((essay, index) => {
                 const card = document.createElement('div');
-                card.className = 'essay-grid-card';
-                card.onclick = () => window.openModal(index); // Trigger Modal
-                card.style.cursor = 'pointer';
 
-                // Format Date
-                const date = new Date(essay.created_at).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                });
+                // Use AI Title or Clean existing title
+                let displayTitle = essay.ai_title || (essay.title || 'Untitled')
+                    .replace(/\.docx|\.edited/gi, '')
+                    .replace(/\d{4}-\d{2}-\d{2}/g, '')
+                    .replace(/[_-]/g, ' ')
+                    .trim();
 
+                // Smart Category Logic
+                const wordCount = essay.word_count || (essay.content || '').split(/\s+/).length;
+                let smartTag = 'EXAM ESSAY';
+
+                if (wordCount > 2500) {
+                    smartTag = 'MAJOR THESIS';
+                } else if (wordCount > 1000) {
+                    smartTag = 'RESEARCH PAPER';
+                }
+
+                card.className = 'essay-card';
+                card.onclick = () => window.openModal(index);
+
+                // AI Teaser or fallback
+                const teaserText = essay.ai_description || (essay.content ? essay.content.substring(0, 120) + '...' : 'No preview available.');
+
+                // Minimalist Academic Archive Layout
                 card.innerHTML = `
-                    <div class="card-category">ESSAY</div> 
-                    <h3 class="card-title">${essay.title || 'Untitled Essay'}</h3>
-                    <p class="card-preview">${essay.content ? essay.content.substring(0, 150) + '...' : 'No preview available.'}</p>
-                    <div class="card-footer">
-                        <span class="card-date">${date}</span>
-                        <span class="card-link">READ SAMPLE <i class="fas fa-arrow-right"></i></span>
+                    <div class='card-top-row'>
+                        <span class='smart-tag'>${smartTag}</span>
+                        <span class='page-count'>${Math.ceil(wordCount / 300)} PAGES</span>
                     </div>
+                    <h3 class='essay-title'>${displayTitle}</h3>
+                    <p class='ai-teaser'>${teaserText}</p>
                 `;
                 vaultGrid.appendChild(card);
             });
@@ -636,8 +655,18 @@
 
             const modalBody = document.getElementById('modal-body');
 
-            // We only show the first 400 characters (approx first paragraph)
-            const teaserContent = (essay.content || '').substring(0, 400) + '...';
+            // Clean content: Remove common cover page keywords if they appear at the start
+            let cleanContent = essay.content || '';
+            // Simple regex to strip lines starting with Name:, Course:, etc. (case insensitive)
+            cleanContent = cleanContent.replace(/^(Name|Student|Course|Instructor|Date|Affiliation|University).*$/gim, '').trim();
+
+            // First Page Preview (approx 275 words / ~1800 chars)
+            const teaserContent = cleanContent.substring(0, 1800) + '...';
+
+            // Calculate remaining pages
+            const wordCount = cleanContent.split(/\s+/).length;
+            const pageCount = Math.ceil(wordCount / 275);
+            const remainingPages = Math.max(0, pageCount - 1);
 
             modalBody.innerHTML = `
                 <div class='academic-page'>
@@ -647,14 +676,18 @@
                         </h2>
                         <p>${teaserContent}</p>
                         
-                        <!-- Paywall Blur & CTA -->
+                        <!-- Paywall Blur & Lead Gen Form -->
                         <div class='paywall-blur'></div>
-                        <div class='paywall-cta'>
-                            <h3>Want to read the full paper?</h3>
-                            <p style='font-size: 0.9rem; margin-bottom: 15px; color: #555;'>Unlock the complete ${essay.content ? Math.ceil(essay.content.length / 1000) : '5+'} page document directly on WhatsApp.</p>
-                            <a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank" class="premium-btn">
-                                <i class="fab fa-whatsapp"></i> Get Full Access
-                            </a>
+                        <div class='lead-gen-box'>
+                            <h3>Read the remaining ${remainingPages}+ pages</h3>
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
+                                This research paper is ${pageCount} pages long (${wordCount.toLocaleString()} words). 
+                                Enter your email to receive the full ${pageCount}-page PDF.
+                            </p>
+                            <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                                <input type="email" id="lead-email" class="lead-input" placeholder="student@university.edu" />
+                                <button class="lead-submit" onclick="handleLeadGeneration('${essay.title.replace(/'/g, "\\'")}')">Unlock Full Paper</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -670,6 +703,26 @@
             document.body.style.overflow = 'hidden';
         };
 
+        // Function to handle the submission
+        window.handleLeadGeneration = function (essayTitle) {
+            const emailInput = document.getElementById('lead-email');
+            const email = emailInput.value;
+
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // In a real app, this would send data to Mailchimp/Supabase
+            alert('Success! We are sending "' + essayTitle + '" to ' + email + '. check your inbox in 5 minutes.');
+
+            // Clear input
+            emailInput.value = '';
+
+            // Optional: Close modal or show success state
+            // closeModal();
+        };
+
         window.closeModal = function (e) {
             if (!e || e.target.id === 'essay-modal' || e.target.classList.contains('close-btn')) {
                 const modal = document.getElementById('essay-modal');
@@ -680,6 +733,31 @@
                 document.body.style.overflow = '';
             }
         };
+    </script>
+    <script>
+        // --- Parallax Scroll Animation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const academicText = document.querySelector('.scrolling-academic-text');
+            const peopleImage = document.querySelector('.people-image-container');
+            const heroSection = document.querySelector('.hero-new');
+
+            if (academicText && peopleImage && heroSection) {
+                window.addEventListener('scroll', () => {
+                    // Performance: Check if hero is in view
+                    const rect = heroSection.getBoundingClientRect();
+                    if (rect.bottom < 0) return;
+
+                    const scrollY = window.pageYOffset;
+
+                    // 1. Text Background: Moves slightly deeper (downwards)
+                    academicText.style.transform = `translateY(${scrollY * 0.3}px)`;
+
+                    // 2. People Image: Moves slightly upward (floating against scroll)
+                    // MUST preserve translateX(-50%) for centering
+                    peopleImage.style.transform = `translate(-50%, ${scrollY * -0.15}px)`;
+                });
+            }
+        });
     </script>
     <!-- Essay Focus Modal -->
     <div id="essay-modal" class="essay-modal" onclick="closeModal(event)">

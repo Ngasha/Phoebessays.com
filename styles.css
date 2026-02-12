@@ -453,28 +453,98 @@ nav {
 
 .vault-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns on desktop */
     gap: 25px;
     width: 100%;
     margin-top: 20px;
 }
 
-.essay-grid-card {
-    background: var(--card-bg);
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 25px;
-    text-align: left;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+/* --- Minimalist Academic Archive UI --- */
+.essay-card {
+    background: transparent;
+    border: 1px solid #222;
+    border-radius: 0;
+    /* Square corners for a 'Journal' feel */
+    padding: 40px;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    justify-content: flex-start;
+    min-height: 250px;
 }
 
-.essay-grid-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.essay-card:hover {
+    border-color: #ff6b00;
+    transform: none;
+    padding-left: 40px;
+    /* Keep padding consistent */
+    box-shadow: none;
+}
+
+.card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.smart-tag {
+    color: #ff6b00;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: transparent;
+    padding: 0;
+    font-weight: 600;
+}
+
+.page-count {
+    display: block;
+    font-size: 0.75rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.essay-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+    text-transform: capitalize;
+}
+
+.ai-teaser {
+    font-family: 'Inter', sans-serif;
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: auto;
+    /* Push to bottom if flex container grows, or just flow naturally */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Ensure no other elements interfere */
+.card-header,
+.card-footer,
+.view-sample {
+    display: none;
+}
+
+/* Hide old elements if they persist */
+.card-header,
+.card-footer,
+.page-count,
+.view-sample {
+    display: none;
 }
 
 .loading-spinner {
@@ -585,13 +655,60 @@ nav {
     /* Ensure left alignment */
 }
 
+/* --- Hero Layering Updates --- */
+.hero-new {
+    position: relative;
+    /* Ensure stage is set */
+    min-height: 80vh;
+    /* Fixed height for consistent staging */
+    overflow: hidden;
+    /* Keep floating elements contained */
+}
+
+/* The Scrolling Background Text */
+.scrolling-academic-text {
+    position: relative;
+    z-index: 1;
+    /* Lower layer */
+    opacity: 0.1;
+    /* Keep it subtle and background-focused */
+    pointer-events: none;
+    /* User can click 'through' the text to the cards */
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* The Floating People Image */
+.people-image-container {
+    position: absolute;
+    bottom: -20px;
+    /* Pulls it 'upward' from the very bottom edge */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Centers it horizontally */
+    z-index: 10;
+    /* Higher layer to float on top of text */
+    width: 100%;
+    max-width: 600px;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+}
+
+.people-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Paragraph spacing in document */
 .essay-content-text p {
     text-indent: 0.5in;
     margin-bottom: 0;
 }
 
-/* --- Paywall / Blur Effect --- */
+/* --- Paywall / Lead Generation --- */
 .essay-content-text {
     position: relative;
 }
@@ -601,49 +718,59 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
-    /* Height of the fade */
+    height: 150px;
+    /* Increased height for better cover */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     pointer-events: none;
+    z-index: 5;
 }
 
-.paywall-cta {
-    margin-top: 20px;
-    padding: 30px;
-    background: #f8f9fa;
-    /* Light grey box */
-    border: 1px dashed #ccc;
+.lead-gen-box {
+    margin-top: -50px;
+    /* Pull up into the blur */
+    position: relative;
+    z-index: 10;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
-.paywall-cta h3 {
+.lead-gen-box h3 {
     font-family: inherit;
-    /* Keep Times New Roman */
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #1a1a1a;
 }
 
-.premium-btn {
-    display: inline-block;
+.lead-input {
+    padding: 12px 20px;
+    width: 70%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.lead-submit {
+    padding: 12px 25px;
     background: #000;
     color: #fff;
-    padding: 12px 25px;
-    text-decoration: none;
-    font-family: var(--font-main);
-    /* Sans-serif for button */
-    font-weight: 700;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: transform 0.2s, background 0.2s;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.premium-btn:hover {
+.lead-submit:hover {
     background: var(--primary-color);
     color: #000;
-    transform: translateY(-2px);
 }
 
 .modal-header-info {
@@ -1361,7 +1488,7 @@ nav {
         /* Consistent gutters */
     }
 
-    .essay-grid-card {
+    .essay-card {
         padding: 16px;
         /* Smaller padding */
         min-height: auto;
