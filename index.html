@@ -634,21 +634,34 @@
             const essay = currentEssays[index];
             if (!essay) return;
 
-            document.getElementById('modal-title').innerText = essay.title || 'Untitled';
-            document.getElementById('modal-category').innerText = essay.category || 'ESSAY';
+            const modalBody = document.getElementById('modal-body');
 
-            // Format Content as HTML Paragraphs (Academic Style)
-            const rawContent = essay.content || 'No content provided.';
-            const formattedContent = rawContent
-                .split('\n')
-                .filter(para => para.trim().length > 0)
-                .map(para => `<p>${para.trim()}</p>`)
-                .join('');
+            // We only show the first 400 characters (approx first paragraph)
+            const teaserContent = (essay.content || '').substring(0, 400) + '...';
 
-            document.getElementById('modal-body').innerHTML = formattedContent;
+            modalBody.innerHTML = `
+                <div class='academic-page'>
+                     <div class='essay-content-text'>
+                        <h2 style='font-size: 14pt; font-weight: bold; text-align: center; margin-bottom: 2rem;'>
+                            ${essay.title}
+                        </h2>
+                        <p>${teaserContent}</p>
+                        
+                        <!-- Paywall Blur & CTA -->
+                        <div class='paywall-blur'></div>
+                        <div class='paywall-cta'>
+                            <h3>Want to read the full paper?</h3>
+                            <p style='font-size: 0.9rem; margin-bottom: 15px; color: #555;'>Unlock the complete ${essay.content ? Math.ceil(essay.content.length / 1000) : '5+'} page document directly on WhatsApp.</p>
+                            <a href="https://wa.me/message/B7CW6QTEDAVSG1" target="_blank" class="premium-btn">
+                                <i class="fab fa-whatsapp"></i> Get Full Access
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
 
             const modal = document.getElementById('essay-modal');
-            modal.style.display = 'flex';
+            modal.style.display = 'block';
 
             // Force reflow
             void modal.offsetWidth;
