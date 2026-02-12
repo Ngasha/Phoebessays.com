@@ -1283,3 +1283,95 @@ nav {
         font-size: 2.5rem;
     }
 }
+
+/* --- MOBILE OPTIMIZATION (App-Like Feel) --- */
+@media (max-width: 768px) {
+
+    /* 1. Compact Grid */
+    .vault-grid {
+        grid-template-columns: 1fr;
+        /* Single column */
+        gap: 12px;
+        /* Tighter spacing */
+        padding: 0 10px;
+        /* Consistent gutters */
+    }
+
+    .essay-grid-card {
+        padding: 16px;
+        /* Smaller padding */
+        min-height: auto;
+        /* Let it shrink */
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        /* Slightly smaller title */
+    }
+
+    .card-preview {
+        /* Clamp text to 3 lines max to save vertical space */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.85rem;
+    }
+
+    /* 2. Bottom Sheet Modal */
+    .essay-modal {
+        align-items: flex-end;
+        /* Push content to bottom */
+    }
+
+    .modal-content-focus {
+        width: 100%;
+        max-width: 100%;
+        height: 85vh;
+        /* Take up 85% of screen height */
+        border-radius: 20px 20px 0 0;
+        /* Round only top corners */
+        margin: 0;
+        transform: translateY(100%);
+        /* Start hidden below screen */
+        padding: 30px 20px;
+    }
+
+    /* Slide Up Animation */
+    .essay-modal.active .modal-content-focus {
+        transform: translateY(0);
+        /* Slide up to position */
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 15px;
+        background: #222;
+        /* Add background for visibility */
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #fff;
+        z-index: 20;
+    }
+
+    .modal-header {
+        text-align: left;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-body {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
